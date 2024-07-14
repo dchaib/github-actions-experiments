@@ -3,6 +3,6 @@
 var versionString = Assembly.GetEntryAssembly()?
     .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?
     .InformationalVersion
-    .ToString()
+    .ToString();
 
 Console.WriteLine($"Hello, this is version {versionString}!");
