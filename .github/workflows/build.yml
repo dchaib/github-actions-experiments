@@ -35,5 +35,7 @@ jobs:
       uses: gittools/actions/gitversion/execute@v1.2.0
     - name: Publish
       run: dotnet pack --no-restore /p:AssemblyVersion=${{ steps.gitversion.outputs.GitVersion_AssemblySemVer }} /p:Version=${{ steps.gitversion.outputs.GitVersion_FullSemVer }}
+    - name: Add source
+      run: dotnet nuget add source --username ${{ github.repository_owner }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
     - name: Push Package to GitHub
-      run: dotnet nuget push --api-key ${{secrets.GITHUB_TOKEN}} --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" **/*.nupkg
+      run: dotnet nuget push --source "github" **/*.nupkg
