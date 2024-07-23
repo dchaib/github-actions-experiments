@@ -34,6 +34,10 @@ jobs:
       id: changelog
       with:
         output-file: "false"
+        skip-git-pull: "true"
+        skip-version-file: "true"
+        skip-commit: "true"
+        skip-tag: "true"
     - name: Pack
       run: dotnet pack --no-restore /p:AssemblyVersion=${{ steps.gitversion.outputs.GitVersion_AssemblySemVer }} /p:Version=${{ steps.gitversion.outputs.GitVersion_FullSemVer }}
     - name: Push Package to GitHub
