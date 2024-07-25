@@ -6,3 +6,4 @@ var versionString = Assembly.GetEntryAssembly()?
     .ToString();
 
 Console.WriteLine($"Hello, this is version {versionString}!");
+Console.WriteLine($"Time is {DateTime.Now}!");
