@@ -28,7 +28,7 @@ jobs:
     # - name: Run tests
     #   run: dotnet test --no-restore --no-build --verbosity normal
     - name: Install GitVersion
-      uses: gittools/actions/gitversion/setup@v3
+      uses: gittools/actions/gitversion/setup@v3.0.0
       with:
         versionSpec: '6.x'
     - name: Display GitVersion config
@@ -37,7 +37,7 @@ jobs:
         arguments: '/showConfig'
     - name: Display GitVersion config
       id: gitversion
-      uses: gittools/actions/gitversion/execute@v3
+      uses: gittools/actions/gitversion/execute@v3.0.0
     - name: Pack
       run: dotnet pack --no-restore /p:Version=${{ steps.gitversion.outputs.NuGetVersionV2 }}
     - name: Upload artifacts
