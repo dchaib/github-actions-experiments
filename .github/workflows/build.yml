@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      version: ${{ steps.gitversion.outputs.NuGetVersionV2 }}
+      version: ${{ steps.gitversion.outputs.SemVer }}
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -35,11 +35,11 @@ jobs:
       uses: gittools/actions/gitversion/command@v3.0.0
       with:
         arguments: '/showConfig'
-    - name: Display GitVersion config
+    - name: Determine version
       id: gitversion
       uses: gittools/actions/gitversion/execute@v3.0.0
     - name: Pack
-      run: dotnet pack --no-restore /p:Version=${{ steps.gitversion.outputs.NuGetVersionV2 }}
+      run: dotnet pack --no-restore /p:Version=${{ steps.gitversion.outputs.SemVer }}
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
