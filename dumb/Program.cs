@@ -8,3 +8,4 @@ var versionString = Assembly.GetEntryAssembly()?
 Console.WriteLine($"Hello, this is version {versionString}!");
 Console.WriteLine($"Time is {DateTime.Now}!");
 Console.WriteLine($"1 + 1 = 2");
+Console.WriteLine($"2 + 1 = 3");
